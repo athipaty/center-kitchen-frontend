@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
 
   // Fetch all orders
   useEffect(() => {
-    axios.get('http://localhost:5000/orders')
+    axios.get('https://center-kitchen-backend.onrender.com/orders')
       .then(res => setOrders(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -25,7 +25,7 @@ function App() {
   // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/orders', form)
+    axios.post('https://center-kitchen-backend.onrender.com/orders', form)
       .then(res => {
         alert('Order submitted!');
         setOrders([...orders, res.data]);
